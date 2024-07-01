@@ -45,11 +45,11 @@ Db --> Service: saved()
 
 deactivate Service
 
-Client -> Service: GET: getMortgageInfo()
+Client -> Service: GET: getMortgageRequestInfo()
 activate Service
 Service -> Db :
 Db --> Service :
-Service --> Client : HTTP 200 mortgageResponse
+Service --> Client : HTTP 200 mortgageRequestResponse
 deactivate Service
 
 
