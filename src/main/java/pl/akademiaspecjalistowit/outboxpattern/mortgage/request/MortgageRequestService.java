@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequestDto;
-import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequestInfoDto;
-import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.entity.MortgageRequestEntity;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.exception.MortgageRequestNotFoundException;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.repository.MortgageRequestRepository;
 
@@ -17,18 +15,9 @@ public class MortgageRequestService {
 
     private final MortgageRequestRepository mortgageRequestRepository;
 
-
-    public UUID receiveRequest(MortgageRequestDto mortgageRequestDto) {
-        MortgageRequestEntity mortgageRequestEntity = new MortgageRequestEntity(mortgageRequestDto.customerId(),
-            mortgageRequestDto.durationInMonths(),
-            mortgageRequestDto.amount());
-        mortgageRequestRepository.save(mortgageRequestEntity);
-        return mortgageRequestEntity.getTechnicalId();
-    }
-
-    public MortgageRequestInfoDto getRequestProcessingInfo(UUID requestId) {
-        return mortgageRequestRepository.findByTechnicalId(requestId)
-            .map(e -> new MortgageRequestInfoDto(e.getState(), null))
+    public MortgageRequestDto getMortgageRequest(UUID mortgageRequestId) {
+        return mortgageRequestRepository.findByTechnicalId(mortgageRequestId)
+            .map(e -> new MortgageRequestDto(e.getCustomerId(), e.getDurationInMonths(), e.getAmount()))
             .orElseThrow(() -> new MortgageRequestNotFoundException("Nie ma takiego wniosku"));
     }
 }

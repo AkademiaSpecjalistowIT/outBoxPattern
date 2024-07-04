@@ -18,7 +18,7 @@ import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequ
 @AllArgsConstructor
 public class MortgageRequestController {
 
-    private final MortgageRequestService mortgageRequestService;
+    private final MortgageRequestApiService mortgageRequestService;
 
     @PostMapping
     public UUID mortgageRequest(@RequestBody MortgageRequestDto mortgageRequestDto) {

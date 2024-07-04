@@ -9,3 +9,14 @@ spring:
     username: sa
     password:
     driverClassName: org.h2.Driver
+
+org:
+  jobrunr:
+    background-job-server:
+      enabled: true
+      poll-interval-in-seconds: 5
+    dashboard:
+      enabled: true
+      port: 8000
+    jobs:
+      default-number-of-retries: 1
