@@ -49,10 +49,15 @@ Client -> Service: GET: getMortgageRequestInfo()
 activate Service
 Service -> Db :
 Db --> Service :
-Service --> Client : HTTP 200 mortgageRequestResponse
+Service --> Client : HTTP 200 mortgageRequestResponse (OfferId)
 deactivate Service
 
-
+Client -> Service: GET: getMortgageOffer(OfferId)
+activate Service
+Service -> Db :
+Db --> Service :
+Service --> Client : HTTP 200 mortgageOfferDto
+deactivate Service
 
 
 @enduml

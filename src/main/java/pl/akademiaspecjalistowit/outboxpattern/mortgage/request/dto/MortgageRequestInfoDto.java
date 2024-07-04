@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.request;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto;
 
 import java.util.UUID;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.entity.RequestState;

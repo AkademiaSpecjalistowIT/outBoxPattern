@@ -4,7 +4,10 @@ import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequestDto;
+import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequestInfoDto;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.entity.MortgageRequestEntity;
+import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.exception.MortgageRequestNotFoundException;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.repository.MortgageRequestRepository;
 
 @Slf4j
@@ -26,6 +29,6 @@ public class MortgageRequestService {
     public MortgageRequestInfoDto getRequestProcessingInfo(UUID requestId) {
         return mortgageRequestRepository.findByTechnicalId(requestId)
             .map(e -> new MortgageRequestInfoDto(e.getState(), null))
-            .orElseThrow(() -> new RuntimeException("Nie ma takiego wniosku"));
+            .orElseThrow(() -> new MortgageRequestNotFoundException("Nie ma takiego wniosku"));
     }
 }

@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.request;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto;
 
 import java.math.BigDecimal;
 import java.util.UUID;
