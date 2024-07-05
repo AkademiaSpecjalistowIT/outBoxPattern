@@ -33,7 +33,7 @@ public class MortgageRequestApiService {
 
     public MortgageRequestInfoDto getRequestProcessingInfo(UUID requestId) {
         return mortgageRequestRepository.findByTechnicalId(requestId)
-            .map(e -> new MortgageRequestInfoDto(e.getState(), null))
+            .map(e -> new MortgageRequestInfoDto(e.getState(), e.getOfferId()))
             .orElseThrow(() -> new MortgageRequestNotFoundException("Nie ma takiego wniosku"));
     }
 }

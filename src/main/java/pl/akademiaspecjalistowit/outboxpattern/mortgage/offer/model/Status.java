@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.offer;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.model;
 
 public enum Status {
     REQUESTED,

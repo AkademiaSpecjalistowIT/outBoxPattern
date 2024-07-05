@@ -1,6 +1,8 @@
 package pl.akademiaspecjalistowit.outboxpattern.mortgage.request.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,7 +27,10 @@ public class MortgageRequestEntity {
     private Integer durationInMonths;
     private BigDecimal amount;
 
+    @Enumerated(EnumType.STRING)
     private RequestState state;
+
+    private UUID offerId;
 
     public MortgageRequestEntity(UUID customerId, Integer durationInMonths, BigDecimal amount) {
         this.customerId = customerId;
@@ -33,5 +38,11 @@ public class MortgageRequestEntity {
         this.amount = amount;
         this.technicalId = UUID.randomUUID();
         this.state = RequestState.REQUESTED;
+        this.offerId = null;
+    }
+
+    public void finalizeRequest(UUID offerId) {
+        this.offerId = offerId;
+        this.state = RequestState.OFFERED;
     }
 }

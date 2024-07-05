@@ -16,21 +16,21 @@ public class MortgageDetailsService implements BikService, BrService, BigService
     @SneakyThrows
     @Override
     public Integer getScoring(Customer customer) {
-        Thread.sleep(36000);
+        Thread.sleep(3600);
         return new Random().nextInt(0,1000);
     }
 
     @SneakyThrows
     @Override
     public AccountInfo getAccountInfo(Customer customer) {
-        Thread.sleep(80000);
+        Thread.sleep(8000);
         return new AccountInfo();
     }
 
     @SneakyThrows
     @Override
     public boolean isCustomerAllowed(AccountInfo customer, Integer scoring) {
-        Thread.sleep(12000);
+        Thread.sleep(1200);
         return true;
     }
 

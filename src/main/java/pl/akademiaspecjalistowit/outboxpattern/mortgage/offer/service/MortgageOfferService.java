@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.offer;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.service;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.akademiaspecjalistowit.outboxpattern.customer.AccountInfo;
 import pl.akademiaspecjalistowit.outboxpattern.customer.Customer;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.MortgageDetailsService;
+import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.model.MortgageOfferEvent;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.entity.MortgageOfferEntity;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.repository.MortgageOfferRepository;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.MortgageRequestService;
@@ -25,6 +26,7 @@ public class MortgageOfferService implements MortgageRequestedEventHandler {
     private final MortgageRequestService mortgageRequestService;
     private final MortgageDetailsService mortgageDetailsService;
     private final MortgageOfferRepository mortgageOfferRepository;
+    private final MortgageOfferEventHandler mortgageOfferEventHandler;
 
     @Transactional
     public void prepareOffer(UUID mortgageRequestId) {
@@ -43,6 +45,7 @@ public class MortgageOfferService implements MortgageRequestedEventHandler {
             new MortgageOfferEntity(mortgageRequestDto.durationInMonths(), mortgageRequestDto.amount());
         mortgageOfferRepository.save(mortgageOfferEntity);
         log.info("Mortgage request processed. Offer {} is ready", mortgageOfferEntity);
+        mortgageOfferEventHandler.handleMortgageOfferEvent(new MortgageOfferEvent(mortgageOfferEntity.getOfferId(),mortgageRequestId));
     }
 
     private Customer getCustomer(UUID customerId) {
