@@ -12,7 +12,7 @@ import pl.akademiaspecjalistowit.outboxpattern.mortgage.MortgageDetailsService;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.model.MortgageOfferEvent;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.entity.MortgageOfferEntity;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.offer.repository.MortgageOfferRepository;
-import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.MortgageRequestService;
+import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.service.MortgageRequestService;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.dto.MortgageRequestDto;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.event.MortgageRequestedEvent;
 import pl.akademiaspecjalistowit.outboxpattern.mortgage.request.event.MortgageRequestedEventHandler;

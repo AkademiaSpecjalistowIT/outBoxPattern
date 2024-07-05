@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.request;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.request.service;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;

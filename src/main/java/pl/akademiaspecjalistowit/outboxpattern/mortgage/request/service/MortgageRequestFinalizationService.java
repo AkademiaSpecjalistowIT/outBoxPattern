@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.outboxpattern.mortgage.request;
+package pl.akademiaspecjalistowit.outboxpattern.mortgage.request.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
