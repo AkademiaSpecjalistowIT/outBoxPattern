@@ -24,7 +24,7 @@ public class MortgageDetailsService implements BikService, BrService, BigService
     @Override
     public AccountInfo getAccountInfo(Customer customer) {
         Thread.sleep(20000);
-        return new AccountInfo();
+        return new AccountInfo("AccInfo");
     }
 
     @SneakyThrows

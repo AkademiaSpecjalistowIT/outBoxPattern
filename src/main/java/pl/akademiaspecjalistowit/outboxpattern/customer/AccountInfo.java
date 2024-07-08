@@ -1,4 +1,5 @@
 package pl.akademiaspecjalistowit.outboxpattern.customer;
 
-public class AccountInfo {
+public record AccountInfo(String value) {
+
 }
